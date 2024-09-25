@@ -1,0 +1,48 @@
+{
+  "resourceType": "Bundle",
+  "id": "searchParameters",
+  "meta": {
+    "lastUpdated": "2021-05-05T08:04:45.3420489+00:00"
+  },
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://www.ihis.com.sg/fhir/SearchParameter/appointment-patient-org-status",
+      "resource": {
+        "resourceType": "SearchParameter",
+        "id": "appointment-patient-org-status",
+        "url": "http://synapxe.sg/fhir/SearchParameter/appointment-patient-org-status",
+        "version": "4.3.0",
+        "name": "appointment-patient-org-status",
+        "status": "draft",
+        "experimental": false,
+        "date": "2019-11-01T09:29:23+11:00",
+        "publisher": "Synapxe Pte Ltd",
+        "description": "The composite of patient, organization and appointment status.",
+        "code": "patient-org-status",
+        "base": [ "Appointment" ],
+        "type": "composite",
+        "expression": "Appointment.participant.actor",
+        "multipleOr": false,
+        "component": [
+          {
+            "definition": "http://hl7.org/fhir/SearchParameter/Appointment-status",
+            "expression": "Appointment.status"
+          },
+          {
+            "definition": "http://hl7.org/fhir/SearchParameter/Appointment-date",
+            "expression": "Appointment.start"
+          },
+          {
+            "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+            "expression": "Appointment.participant.actor.where(resolve() is Patient)"
+          },
+          {
+            "definition": "http://hl7.org/fhir/SearchParameter/Appointment-actor",
+            "expression": "Appointment.participant.actor.where(resolve() is HealthcareService)"
+          }
+        ]
+      }
+    }
+  ]
+}

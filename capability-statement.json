@@ -1,0 +1,284 @@
+{
+  "resourceType": "CapabilityStatement",
+  "version": "1.0.0",
+  "name": "IhisCcdpR4FhirAppointmentServiceCapabilityStatement",
+  "title": "Appointment, Registration and Visitor Management",
+  "status": "active",
+  "date": "2021-04-01T00:00:00.000+08:00",
+  "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+  "description": "FHIR R4",
+  "kind": "instance",
+  "fhirVersion": "4.3.0",
+  "format": [
+    "json",
+    "application/fhir+json"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "IHiS Implementation of FHIR R4 AppointmentService",
+      "security": {
+        "cors": true
+      }
+    },
+    {
+      "resource": [
+        {
+          "type": "CapabilityStatement",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+          "type": "OperationDefinition",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+          "type": "SearchParameter",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+          "type": "StructureDefinition",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+          "type": "ValueSet",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+
+          "type": "Patient",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+
+          "type": "HealthcareService",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+
+          "type": "Location",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+
+          "type": "Schedule",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version"
+        },
+        {
+          "type": "Appointment",
+          //"profile": "StructureDefinition/ccdp-appointment",
+          "documentation": "Use these APIs to retrieve available slots and book an appointment for a specific health and care service, for example, from SingHealth Polyclinics into a General Medicine Consultation.",
+          "interaction": [
+            {
+              "code": "search-type",
+              "documentation": "Searches for appointments by patient."
+            },
+            {
+              "code": "create",
+              "documentation": "Create appointment."
+            }
+          ],
+          "versioning": "no-version",
+          "searchParam": [
+            {
+              "name": "patient",
+              "definition": "SearchParameter/appointment-patient",
+              "type": "reference",
+              "documentation": "Patient."
+            },
+            {
+              "name": "requesterId",
+              "definition": "SearchParameter/appointment-requesterId",
+              "type": "string",
+              "documentation": "requesterId."
+            }
+          ],
+          "operation": [
+            {
+              "name": "cancel",
+              "definition": "OperationDefinition/appointment-cancel",
+              "documentation": "Cancel appointment."
+            },
+            {
+              "name": "reschedule",
+              "definition": "OperationDefinition/appointment-reschedule",
+              "documentation": "Reschedule one appointment."
+            },
+            {
+              "name": "reschedule-linked-appointments",
+              "definition": "OperationDefinition/appointment-reschedule-linked-appointments",
+              "documentation": "Reschedule linked appointment."
+            },
+            {
+              "name": "find-tcu-requests",
+              "definition": "OperationDefinition/appointment-find-tcu-requests",
+              "documentation": "Get Pending TCU Requests."
+            },
+            {
+              "name": "book-tcu",
+              "definition": "OperationDefinition/appointment-book-tcu",
+              "documentation": "Books TCU Appointment against a TCU Request Id."
+            },
+            {
+              "name": "find-today-appointment",
+              "definition": "OperationDefinition/appointment-find-today-appointment",
+              "documentation": "Get Today Appointment from EQMS"
+            },
+            {
+              "name": "put-hsg-consult",
+              "definition": "OperationDefinition/appointment-put-hsg-consult",
+              "documentation": "Update HSG Consult Indicator"
+            },
+            {
+              "name": "get-message",
+              "definition": "OperationDefinition/appointment-get-message",
+              "documentation": "Get Message"
+            },
+            {
+              "name": "get-virtual-appointment",
+              "definition": "OperationDefinition/appointment-get-virtual-appointment",
+              "documentation": "Get Virtual Appointment Details"
+            }
+          ]
+        },
+        {
+          "type": "Slot",
+          //"profile": "StructureDefinition/ccdp-slot",
+          "documentation": "A slot represents time allocations determined by a Provider organization and made available to Consumers. It is fundamental to the appointment booking process.<br><br><span style='font-size:larger; font-weight:bold;'>Use Case</span><br>A consumer system requests available slots from a provider system matching the selected date/time range and for a specific service.",
+          "interaction": [
+            {
+              "code": "search-type"
+            },
+            {
+              "code": "create"
+            }
+          ],
+          "versioning": "no-version",
+          "operation": [
+            {
+              "name": "find-available-dates",
+              "definition": "OperationDefinition/slot-find-available-dates",
+              "documentation": "Get slot search dates."
+            },
+            {
+              "name": "find-available-slots",
+              "definition": "OperationDefinition/slot-find-available-slots",
+              "documentation": "Find available slots"
+            },
+            {
+              "name": "find-tcu-available-dates",
+              "definition": "OperationDefinition/slot-find-tcu-available-dates",
+              "documentation": "Get Available Dates for a TCU Request Id."
+            },
+            {
+              "name": "find-tcu-available-slots",
+              "definition": "OperationDefinition/slot-find-tcu-available-slots",
+              "documentation": "Get Slots for a TCU Request Id."
+            }
+          ]
+        },
+        {
+          "type": "Encounter",
+          //"profile": "StructureDefinition/ccdp-encounter",
+          //"documentation": "Use these APIs to register a booked appointment, amend reminder contact for this visit, get a queue status and check-in to the appointed counter. The API is mainly used to carry information arising from an interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+          "documentation": "Use these APIs to register a booked appointment, amend reminder contact for this visit and get a queue status. The API is mainly used to carry information arising from an interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code":  "create"
+            }
+          ],
+          "versioning": "no-version",
+          "operation": [
+            {
+              "name": "actualise-appointment",
+              "definition": "OperationDefinition/encounter-actualise-appointment",
+              "documentation": "Actualise appointment."
+            },
+            {
+              "name": "register-walk-in",
+              "definition": "OperationDefinition/encounter-register-walk-in",
+              "documentation": "Register walk-in"
+            },
+            {
+              "name": "checkin-next-station",
+              "definition": "OperationDefinition/encounter-checkin-next-station",
+              "documentation": "Check in next station for TTSH."
+            },
+            {
+              "name": "update-reminder-contact",
+              "definition": "OperationDefinition/encounter-update-reminder-contact",
+              "documentation": "Update reminder contact."
+            },
+            {
+              "name": "start-virtualize-consultation",
+              "definition": "OperationDefinition/encounter-start-virtualize-consultation",
+              "documentation": "Register walk-in (VCP)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

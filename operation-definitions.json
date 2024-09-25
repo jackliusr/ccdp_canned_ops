@@ -1,0 +1,1880 @@
+{
+  "resourceType": "Bundle",
+  "id": "operationDefinitions",
+  "meta": {
+    "lastUpdated": "2021-05-19T03:46:28.76131+00:00"
+  },
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-reschedule-linked-appointments",
+        "name": "RescheduleLinkedAppointments",
+        "title": "Appointment_OperationType_RescheduleLinked",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Schedule multiple appointments based on the slot for NGEMR.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "reschedule-linked-appointments",
+        "parameter": [
+          {
+            "id": "Appointment-reschedule-linked-appointments-appointment",
+            "name": "appointment",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Appointment.",
+            "type": "Appointment"
+          },
+          //{
+          //  "id": "Appointment-reschedule-linked-appointments-patient",
+          //  "name": "patient",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Patient.",
+          //  "type": "Patient"
+          //},
+          //{
+          //  "id": "Appointment-reschedule-linked-appointments-organization",
+          //  "name": "organization",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Organization (HealthCareService)",
+          //  "type": "Reference",
+          //  "extension": [
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          //      "extension": [
+          //        {
+          //          "url": "path",
+          //          "valueCode": "Appointment.participant[0].actor"
+          //        },
+          //        {
+          //          "url": "type",
+          //          "valueCode": "replace"
+          //        }
+          //      ]
+          //    }
+          //  ]
+          //},
+          //{
+          //  "id": "Appointment-reschedule-linked-appointments-slotIdList",
+          //  "name": "slotIdList",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "List of slot ID, comma separated.",
+          //  "type": "Reference",
+          //  "extension": [
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          //      "extension": [
+          //        {
+          //          "url": "path",
+          //          "valueString": "Appointment.slot"
+          //        },
+          //        {
+          //          "url": "type",
+          //          "valueCode": "delete"
+          //        }
+          //      ]
+          //    },
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          //      "extension": [
+          //        {
+          //          "url": "type",
+          //          "valueCode": "add"
+          //        },
+          //        {
+          //          "url": "path",
+          //          "valueString": "Appointment.slot"
+          //        }
+          //      ]
+          //    }
+          //  ]
+          //},
+          //{
+          //  "id": "Appointment-reschedule-linked-appointments-patientInstruction",
+          //  "name": "patientInstruction",
+          //  "use": "out",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "Patient instruction.",
+          //  "type": "string",
+          //  "extension": [
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          //      "extension": [
+          //        {
+          //          "url": "path",
+          //          "valueString": "Appointment.patientInstruction"
+          //        },
+          //        {
+          //          "url": "type",
+          //          "valueCode": "replace"
+          //        }
+          //      ]
+          //    }
+          //  ]
+          //},
+          {
+            "id": "Appointment-reschedule-linked-appointments-outcome",
+            "name": "updated",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Outcome of reschedule-linked-appointments operation.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-find-today-appointment",
+        "name": "FindTodayAppointment",
+        "title": "Appointment_OperationType_FindTodayAppointment",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get Today Appointment from EQMS",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "find-today-appointment",
+        "parameter": [
+          {
+            "id": "Appointment-find-today-appointment-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "patient"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Appointment-find-today-appointment-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "actor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Appointment-find-today-appointment-status",
+            "name": "status",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "type": "code",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueCode": "booked"
+              }
+            ]
+          },
+          {
+            "id": "Appointment-find-today-appointment-date",
+            "name": "date",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "type": "date",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-transform",
+                "valueString": "today().toString('yyyy-MM-dd')"
+              }
+            ]
+          },
+          {
+            "id": "Appointment-find-today-appointment-location",
+            "name": "result",
+            "use": "out",
+            "min": 0,
+            "max": "1",
+            "documentation": "Appointment",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "slot-find-available-dates",
+        "name": "FindAvailableDates",
+        "title": "Slot_OperationType_FindSlotSearchDates",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Find slot search dates.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Slot" ],
+        "code": "find-available-dates",
+        "parameter": [
+          {
+            "id": "Slot-find-available-dates-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "schedule.actor"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Slot-find-available-dates-patient",
+          //  "name": "patient",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Patient.",
+          //  "type": "Reference"
+          //},
+          //{
+          //  "id": "Slot-find-available-dates-appointment",
+          //  "name": "appointment",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Appointment.",
+          //  "type": "Reference"
+          //},
+          //{
+          //  "id": "Slot-find-available-dates-currentSlot",
+          //  "name": "currentSlot",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Appointment current slot.",
+          //  "type": "string"
+          //},
+          {
+            "id": "Slot-find-available-dates-start",
+            "name": "start",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "documentation": "Earliest slot search date.",
+            "type": "dateTime",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-transform",
+                "valueString": "'ge' + today().toString('yyyy-MM-dd')"
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-available-dates-status",
+            "name": "status",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "documentation": "Latest slot search date.",
+            "type": "code",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueCode": "free"
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-available-dates-result",
+            "name": "result",
+            "use": "out",
+            "min": 0,
+            "max": "*",
+            "documentation": "Available slots.",
+            "type": "Slot"
+          }
+        ]
+      }
+    },
+
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "slot-find-available-slots",
+        "name": "FindAvailableSlots",
+        "title": "Slot_OperationType_FindAvailableSlots",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get available slots.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Slot" ],
+        "code": "find-available-slots",
+        "parameter": [
+          {
+            "id": "Slot-find-available-slots-start",
+            "name": "start",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Slot search range start date.",
+            "type": "date",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "start"
+                  },
+                  {
+                    "url": "prefix",
+                    "valueString": "ge"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-available-slots-end",
+            "name": "end",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Slot search range end date.",
+            "type": "date",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "start"
+                  },
+                  {
+                    "url": "prefix",
+                    "valueString": "le"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-available-slots-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "schedule.actor"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Slot-find-available-slots-patient",
+          //  "name": "patient",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Patient.",
+          //  "type": "Reference"
+          //},
+          {
+            "id": "Slot-find-available-slots-healthcareService",
+            "name": "healthcareService",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Healthcare Service, required for create new appointment.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "specialty"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Slot-find-available-slots-existingAppointment",
+          //  "name": "existingAppointment",
+          //  "use": "in",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "Existing appointment, required for reschedule.",
+          //  "type": "Reference"
+          //},
+          //{
+          //  "id": "Slot-find-available-slots-slotIdList",
+          //  "name": "slotIdList",
+          //  "use": "in",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "Slot Id List: Encrypted value of slots, comma-separated.",
+          //  "type": "string"
+          //},
+          //{
+          //  "id": "Slot-find-available-slots-currentSlot",
+          //  "name": "currentSlot",
+          //  "use": "in",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "Appointment current slot, required for reschedule.",
+          //  "type": "Reference"
+          //},
+          {
+            "id": "Slot-find-available-slots-nextPageRequestData",
+            "name": "nextPageRequestData",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Next page request data.",
+            "type": "string",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "_skip"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-available-slots-return",
+            "name": "return",
+            "min": 0,
+            "max": "*",
+            "use": "out",
+            "documentation": "Bundle of Slot resource.",
+            "type": "Slot"
+          }
+        ]
+      }
+    },
+    //TCU
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-find-tcu-requests",
+        "name": "FindTcuRequests",
+        "title": "Appointment_OperationType_FindTcuRequests",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Find TCU requests.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "find-tcu-requests",
+        "parameter": [
+          {
+            "id": "Appointment-find-tcu-requests-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "actor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Appointment-find-tcu-requests-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference"
+          },
+          {
+            "id": "Appointment-find-tcu-requests-tcu-coding",
+            "name": "is-tcu",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "documentation": "Patient.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueString": "http://synapxe.sg/CCDP/identifier-tcu-request|"
+              },
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "identifier"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Appointment-find-tcu-requests-tcuRequestId",
+          //  "name": "tcuRequestId",
+          //  "use": "out",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "TCU request ID for further TCU operation.",
+          //  "type": "integer",
+          //  "extension": [
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+          //      "extension": [
+          //        {
+          //          "url": "mapping",
+          //          "valueCode": "identifier"
+          //        },
+          //        {
+          //          "url": "system",
+          //          "valueUri": "http://synapxe.sg/CCDP/identifier-tcu-request"
+          //        }
+          //      ]
+          //    }
+          //  ]
+          //},
+          {
+            "id": "Appointment-find-tcu-requests-userMessage",
+            "name": "result",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Message to user.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "slot-find-tcu-available-dates",
+        "name": "FindTcuAvailableDates",
+        "title": "Slot_OperationType_GetAvailableDatesForTcu",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get TCU available dates.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Slot" ],
+        "code": "find-tcu-available-dates",
+        "parameter": [
+          {
+            "id": "Slot-find-tcu-available-dates-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "schedule.actor:HealthcareService"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Slot-find-tcu-available-dates-patient",
+          //  "name": "patient",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Patient.",
+          //  "type": "Reference"
+          //},
+          {
+            "id": "Slot-find-tcu-available-dates-tcuRequestId",
+            "name": "tcuRequestId",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "TCU Request Id.",
+            "type": "integer",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "_has:Appointment:slot:identifier"
+                  },
+                  {
+                    "url": "system",
+                    "valueUri": "http://synapxe.sg/CCDP/identifier-tcu-request"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-tcu-available-dates-availableDates",
+            "name": "result",
+            "use": "out",
+            "min": 0,
+            "max": "*",
+            "documentation": "TCU appointment available dates.",
+            "type": "Slot"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "slot-find-tcu-available-slots",
+        "name": "FindTcuAvailableSlots",
+        "title": "Slot_OperationType_GetAvailableTcuAppointmentSlots",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get available slots for TCU Appointment.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Slot" ],
+        "code": "find-tcu-available-slots",
+        "parameter": [
+          {
+            "id": "Slot-find-tcu-available-slots-start",
+            "name": "start",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Slot search range start date.",
+            "type": "date"
+          },
+          //{
+          //  "id": "Slot-find-tcu-available-slots-end",
+          //  "name": "end",
+          //  "use": "in",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "Slot search range end date.",
+          //  "type": "date"
+          //},
+          {
+            "id": "Slot-find-tcu-available-slots-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "schedule.actor:HealthcareService"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Slot-find-tcu-available-slots-patient",
+          //  "name": "patient",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Patient.",
+          //  "type": "Reference"
+          //},
+          {
+            "id": "Slot-find-tcu-available-slots-tcuRequestId",
+            "name": "tcuRequestId",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "TCU Request Id.",
+            "type": "integer",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "_has:Appointment:slot:identifier"
+                  },
+                  {
+                    "url": "system",
+                    "valueUri": "http://synapxe.sg/CCDP/identifier-tcu-request"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Slot-find-tcu-available-slots-nextPageRequestData",
+            "name": "nextPageRequestData",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Next page request data, required to get next page of slots.",
+            "type": "string"
+          },
+          {
+            "id": "Slot-find-tcu-available-slots-bundle",
+            "name": "result",
+            "use": "out",
+            "min": 0,
+            "max": "*",
+            "documentation": "Bundle of Slot resource.",
+            "type": "Slot"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-book-tcu",
+        "name": "BookTcu",
+        "title": "Appointment_OperationInstance_createTcuAppointment",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Create TCU appointment.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "book-tcu",
+        "contained": {
+          "resourceType": "Appointment",
+          "id": "template",
+          "status": "proposed",
+          "minutesDuration": 30,
+          "participant": [
+            {
+              "type": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                      "code": "ATND"
+                    }
+                  ]
+                }
+              ],
+              "status": "declined"
+            },
+            {
+              "actor": {
+                "reference": "HealthcareService/hs-001"
+              },
+              "status": "declined"
+            }
+          ]
+        },
+        "parameter": [
+          {
+            "name": "resource",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "type": "Appointment",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueReference": {
+                  "reference": "#template"
+                }
+              }
+            ]
+          },
+          {
+            "id": "Appointment-book-tcu-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Appointment.patient",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "participant[0].actor"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Appointment-book-tcu-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Appointment.organization",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "participant[1].actor"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Appointment-book-tcu-tcuRequestId",
+          //  "name": "tcuRequestId",
+          //  "use": "in",
+          //  "min": 0,
+          //  "max": "1",
+          //  "documentation": "TCU Request Id.",
+          //  "type": "integer",
+          //  "extension": [
+          //    {
+          //      "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          //      "extension": [
+          //        {
+          //          "url": "path",
+          //          "valueString": "Appointment.slot"
+          //        },
+          //        {
+          //          "url": "type",
+          //          "valueCode": "replace"
+          //        }
+          //      ]
+          //    }
+          //  ]
+          //},
+          {
+            "id": "Appointment-book-tcu-bundle",
+            "name": "created",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Bundle of Appointment resource.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    //TCU END
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-put-hsg-consult",
+        "name": "UpdateHsgConsultInd",
+        "title": "Appointment_OperationType_UpdateHsgConsultInd",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Update Hsg Consult Indicator",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "put-hsg-consult",
+        "parameter": [
+          {
+            "id": "Appointment-put-hsg-consult-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference"
+          },
+          {
+            "id": "Appointment-put-hsg-consult-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient (HealthCareService)",
+            "type": "Reference"
+          },
+          {
+            "id": "Appointment-put-hsg-consult-isHsgConsult",
+            "name": "isHsgConsult",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "HSG Consult Indicator",
+            "type": "boolean"
+          },
+          {
+            "id": "Appointment-put-hsg-consult-appointment",
+            "name": "appointment",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Existing Appointment Id",
+            "type": "Reference"
+          },
+          {
+            "id": "Appointment-put-hsg-consult-requesterId",
+            "name": "requesterId",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Optional. Requester ID.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-get-message",
+        "name": "GetMessage",
+        "title": "Appointment_OperationType_GetMessage",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get Hsg Scenario Message",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "get-message",
+        "parameter": [
+          {
+            "id": "Appointment-get-message-requesterId",
+            "name": "requesterId",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Optional. Requester ID.",
+            "type": "string"
+          },
+          {
+            "id": "Appointment-get-message-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "string"
+          },
+          {
+            "id": "Appointment-get-message-messageId",
+            "name": "messageId",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "HSG Scenario Id",
+            "type": "integer"
+          },
+          {
+            "id": "Appointment-get-message-organization-name",
+            "name": "organization-name",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Polyclinic Name",
+            "type": "string"
+          },
+          {
+            "id": "Appointment-get-message-enrolled-pcp-name",
+            "name": "enrolled-pcp-name",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Enrolled PCP Name",
+            "type": "string"
+          },
+          {
+            "id": "Appointment-get-message-end",
+            "name": "end",
+            "use": "out",
+            "min": 0,
+            "max": "1",
+            "documentation": "Health Plan Discussion Completion Date",
+            "type": "dateTime"
+          },
+          {
+            "id": "Appointment-get-message-start",
+            "name": "start",
+            "use": "out",
+            "min": 0,
+            "max": "1",
+            "documentation": "Appointment Date Time",
+            "type": "dateTime"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "encounter-actualise-appointment",
+        "name": "ActualiseAppointment",
+        "title": "Encounter_OperationType_Actualise",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Actualise appointment.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Encounter" ],
+        "code": "actualise-appointment",
+        "contained": [
+          {
+            "resourceType": "Encounter",
+            "id": "template",
+            "status": "planned",
+            "class": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "IMP",
+              "display": "inpatient encounter"
+            },
+            "location": [
+              {
+                "location": {
+                  "reference": "Location/loc-01"
+                }
+              }
+            ],
+            "appointment": [
+              {
+                "reference":  "Appointment/apt-001"
+              }
+            ]
+          }
+        ],
+        "parameter": [
+          {
+            "name": "resource",
+            "use":  "in",
+            "min": 0,
+            "max": "0",
+            "type": "Encounter",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueReference": {
+                  "reference": "#template"
+                }
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.subject"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "add"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+             "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.serviceProvider"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-appointment",
+            "name": "appointment",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Appointment.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.appointment[0]"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-organizationUnit",
+            "name": "organizationUnit",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "organizationUnit value from Appointment extension.",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-actualise-appointment-location",
+            "name": "location",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Location / clinic code.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.location[0].location"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-questionnaireResponse",
+            "name": "questionnaireResponse",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Kiosk questionnaire response.",
+            "type": "QuestionnaireResponse",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "type",
+                    "valueCode": "add"
+                  },
+                  {
+                    "url": "path",
+                    "valueString": "Encounter"
+                  },
+                  {
+                    "url": "name",
+                    "valueString": "extension"
+                  },
+                  {
+                    "url": "value",
+                    "extension": [
+                      {
+                        "url": "url",
+                        "valueUri": "http://synapxe.sg/CCDP/Encounter-questionnaireResponse"
+                      },
+                      {
+                        "url": "value",
+                        "_valueBoolean": {
+                          "extension": [
+                            {
+                              "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch-placeholder",
+                              "valueBoolean": true
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-actualise-appointment-requesterId",
+            "name": "requesterId",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "requesterId",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-actualise-appointment-mPayOptIn",
+            "name": "mPayOptIn",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "mPayOptIn",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-actualise-appointment-vcpSupportStatus",
+            "name": "vcpSupportStatus",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "vcpSupportStatus",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-actualise-appointment-return",
+            "name": "return",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Encounter resource.",
+            "type": "Encounter"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "encounter-register-walk-in",
+        "name": "RegisterWalkIn",
+        "title": "Encounter_OperationType_RegisterWalkIn",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Register walk-in.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Encounter" ],
+        "code": "register-walk-in",
+        "contained": [
+          {
+            "resourceType": "Encounter",
+            "id": "template",
+            "status": "planned"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "resource",
+            "use": "in",
+            "min": 0,
+            "max": "0",
+            "type": "Encounter",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-default-value",
+                "valueReference": {
+                  "reference": "#template"
+                }
+              }
+            ]
+          },
+          {
+            "id": "Encounter-register-walk-in-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.subject"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          //{
+          //  "id": "Encounter-register-walk-in-organization",
+          //  "name": "organization",
+          //  "use": "in",
+          //  "min": 1,
+          //  "max": "1",
+          //  "documentation": "Organization (HealthCareService)",
+          //  "type": "Reference"
+          //},
+          {
+            "id": "Encounter-register-walk-in-organizationUnit",
+            "name": "organizationUnit",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "organizationUnit value from Appointment extension.",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-register-walk-in-location",
+            "name": "location",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Location / clinic code.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "add"
+                  },
+                  {
+                    "url": "name",
+                    "valueString": "location"
+                  },
+                  {
+                    "url": "value",
+                    "extension": [
+                      {
+                        "url": "status",
+                        "valueCode": "planned"
+                      },
+                      {
+                        "url": "location",
+                        "_valueBoolean": {
+                          "extension": [
+                            {
+                              "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch-placeholder",
+                              "valueBoolean": true
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-register-walk-in-questionnaireResponse",
+            "name": "questionnaireResponse",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Kiosk questionnaire response.",
+            "type": "QuestionnaireResponse",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "type",
+                    "valueCode": "add"
+                  },
+                  {
+                    "url": "path",
+                    "valueString": "Encounter"
+                  },
+                  {
+                    "url": "name",
+                    "valueString": "extension"
+                  },
+                  {
+                    "url": "value",
+                    "extension": [
+                      {
+                        "url": "url",
+                        "valueUri": "http://synapxe.sg/CCDP/Encounter-questionnaireResponse"
+                      },
+                      {
+                        "url": "value",
+                        "_valueBoolean": {
+                          "extension": [
+                            {
+                              "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch-placeholder",
+                              "valueBoolean": true
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-register-walk-in-serviceType",
+            "name": "serviceType",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Optional. Service Type.",
+            "type": "CodeableConcept",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter.serviceType"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "replace"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-register-walk-in-reminderContactNo",
+            "name": "reminderContactNo",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Optional. Reminder Contact Number.",
+            "type": "string",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+                "extension": [
+                  {
+                    "url": "path",
+                    "valueString": "Encounter"
+                  },
+                  {
+                    "url": "type",
+                    "valueCode": "add"
+                  },
+                  {
+                    "url": "name",
+                    "valueString": "extension"
+                  },
+                  {
+                    "url": "value",
+                    "extension": [
+                      {
+                        "url": "url",
+                        "valueUri": "http://synapxe.sg/CCDP/extension/Encounter-reminder-contact-no"
+                      },
+                      {
+                        "url": "value",
+                        "_valueBoolean": {
+                          "extension": [
+                            {
+                              "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch-placeholder",
+                              "valueBoolean": true
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-register-walk-in-created",
+            "name": "created",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Encounter resource created for the walk-in.",
+            "type": "Encounter"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "encounter-checkin-next-station",
+        "name": "CheckinNextStation",
+        "title": "Encounter_OperationInstance_CheckInNextStation",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Check in next station for TTSH.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Encounter" ],
+        "code": "checkin-next-station",
+        "parameter": [
+          {
+            "id": "Encounter-checkin-next-station-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference"
+          },
+          {
+            "id": "Encounter-checkin-next-station-appointment",
+            "name": "appointment",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Appointment.",
+            "type": "Reference"
+          },
+          {
+            "id": "Encounter-checkin-next-station-encounterId",
+            "name": "encounterId",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Encounter ID.",
+            "type": "string",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "_id"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-checkin-next-station-questionnaireResponse",
+            "name": "questionnaireResponse",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Kiosk questionnaire response.",
+            "type": "QuestionnaireResponse"
+          },
+          {
+            "id": "Encounter-checkin-next-station-checkIn",
+            "name": "checkIn",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Optional. Check In Flag.",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-checkin-next-station-return",
+            "name": "updated",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Encounter resource.",
+            "type": "Encounter"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "encounter-update-reminder-contact",
+        "name": "UpdateReminderContact",
+        "title": "Encounter_OperationInstance_UpdateReminderContact",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Update reminder contact.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Encounter" ],
+        "code": "update-reminder-contact",
+        "parameter": [
+          {
+            "id": "Encounter-update-reminder-contact-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference"
+          },
+          {
+            "id": "Encounter-update-reminder-contact-encounterId",
+            "name": "encounterId",
+            "use": "in",
+            "min": 0,
+            "max": "1",
+            "documentation": "Encounter ID.",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-update-reminder-contact-reminderContact",
+            "name": "reminderContact",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Contact number to receive reminder.",
+            "type": "string"
+          },
+          {
+            "id": "Encounter-update-reminder-contact-outcome",
+            "name": "updated",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Outcome of update-reminder-contact operation.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "encounter-start-virtualize-consultation",
+        "name": "StartConsultation",
+        "title": "Encounter_OperationInstance_StartConsultation",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": true,
+        "description": "Start Consultation.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Encounter" ],
+        "code": "start-virtual-consultation",
+        "parameter": [
+          {
+            "id": "Encounter-start-virtualize-consultation-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "actor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Encounter-start-virtualize-consultation-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference"
+          },
+          {
+            "id": "Encounter-start-virtualize-consultation-appointment",
+            "name": "appointment",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Appointment.",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "identifier"
+                  }
+                ]
+              }
+            ]
+          },
+          // update appoint to make addd
+          {
+            "id": "Encounter-start-virtualize-consultation-outcome",
+            "name": "updated",
+            "use": "out",
+            "min": 1,
+            "max": "1",
+            "documentation": "Outcome of start-virtualize-consultation operation.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationDefinition",
+        "id": "appointment-get-virtual-appointment",
+        "name": "StartConsultation",
+        "title": "VirtualAppointment_SearchType",
+        "status": "active",
+        "kind": "operation",
+        "affectsState": false,
+        "description": "Get Virtual Appointment Details.",
+        "system": false,
+        "type": true,
+        "instance": false,
+        "resource": [ "Appointment" ],
+        "code": "get-virtual-appointment",
+        "parameter": [
+          {
+            "id": "Appointment-get-virtual-appointment-organization",
+            "name": "organization",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Organization (HealthCareService)",
+            "type": "Reference",
+            "extension": [
+              {
+                "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+                "extension": [
+                  {
+                    "url": "mapping",
+                    "valueCode": "actor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "appointment-get-virtual-appointment-patient",
+            "name": "patient",
+            "use": "in",
+            "min": 1,
+            "max": "1",
+            "documentation": "Patient.",
+            "type": "Reference"
+          },
+          {
+            "id": "appointment-get-virtual-appointment-outcome",
+            "name": "result",
+            "use": "out",
+            "min": 0,
+            "max": "*",
+            "documentation": "Outcome of appointment-get-virtual-appointment operation.",
+            "type": "Appointment"
+          }
+        ]
+      }
+    }
+  ]
+}

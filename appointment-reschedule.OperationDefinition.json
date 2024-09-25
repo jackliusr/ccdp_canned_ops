@@ -1,0 +1,172 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "appointment-reschedule",
+  "name": "Reschedule",
+  "title": "Appointment_OperationInstance_Reschedule",
+  "status": "active",
+  "kind": "operation",
+  "affectsState": true,
+  "description": "Reschedule one appointment.",
+  "system": false,
+  "type": true,
+  "instance": false,
+  "resource": [ "Appointment" ],
+  "code": "reschedule",
+  "parameter": [
+    {
+      "id": "Appointment-reschedule-patient",
+      "name": "patient",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "Patient.",
+      "type": "Reference"
+    },
+    {
+      "id": "Appointment-reschedule-organization",
+      "name": "organization",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "Organization (HealthCareService)",
+      "type": "Reference",
+      "extension": [
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+          "extension": [
+            {
+              "url": "mapping",
+              "valueCode": "actor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Appointment-reschedule-id",
+      "name": "existingAppointmentId",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "Existing Appointment Id.",
+      "type": "string",
+      "extension": [
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-search",
+          "extension": [
+            {
+              "url": "mapping",
+              "valueCode": "_id"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Appointment-reschedule-start",
+      "name": "start",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "New slot start datetime.",
+      "type": "instant",
+      "extension": [
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "Appointment.start"
+            },
+            {
+              "url": "type",
+              "valueCode": "replace"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Appointment-reschedule-newSlot",
+      "name": "newSlot",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "New slot ID.",
+      "type": "Reference",
+      "extension": [
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "Appointment.slot"
+            },
+            {
+              "url": "type",
+              "valueCode": "delete"
+            }
+          ]
+        },
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "Appointment"
+            },
+            {
+              "url": "name",
+              "valueString": "slot"
+            },
+            {
+              "url": "type",
+              "valueCode": "add"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Appointment-reschedule-patientInstruction",
+      "name": "patientInstruction",
+      "use": "in",
+      "min": 0,
+      "max": "0",
+      "documentation": "Patient instruction.",
+      "type": "string",
+      "extension": [
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-transform",
+          "valueString": "'Please arrive at the clinic by ' + (%rootResource.parameter.where(name='start').value - 30 minutes).toString('hh:mm tt')"
+        },
+        {
+          "url": "http://synapxe.sg/StructureDefinition/OperationDefinition-parameter-canned-patch",
+          "extension": [
+            {
+              "url": "path",
+              "valueString": "Appointment"
+            },
+            {
+              "url": "name",
+              "valueString": "patientInstruction"
+            },
+            {
+              "url": "type",
+              "valueCode": "add"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Appointment-reschedule-updated",
+      "name": "updated",
+      "use": "out",
+      "min": 1,
+      "max": "1",
+      "documentation": "The updated appointment.",
+      "type": "Appointment"
+    }
+  ]
+}
